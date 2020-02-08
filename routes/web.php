@@ -18,5 +18,9 @@ Route::get('/', function () {
 });
 
 Route::namespace('Portal')->group(function () {
-    Route::get('/portal/listing/create', 'ListingController@create');
+    Route::get('/portal/listing', 'ListingController@index')->name('portal.listing.index');
+    Route::get('/portal/listing/create', 'ListingController@create')->name('portal.listing.create');
+    Route::post('/portal/listing', 'ListingController@store')->name('portal.listing.store');
+    Route::get('/portal/listing/{listing}/edit', 'ListingController@edit')->name('portal.listing.edit');
+    Route::put('/portal/listing/{listing}', 'ListingController@update')->name('portal.listing.update');
 });
