@@ -14,7 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-// add by kimheang
-// Added by Socheat
-// Added one more
