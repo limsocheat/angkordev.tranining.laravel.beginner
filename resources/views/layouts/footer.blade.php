@@ -29,24 +29,24 @@
                     <div class="widget-posts fl-wrap">
                         <ul>
                             <li class="clearfix">
-                                <a href="#" class="widget-posts-img"><img src="images/all/1.jpg" class="respimg"
-                                        alt=""></a>
+                                <a href="#" class="widget-posts-img"><img src="{{ asset('images/all/1.jpg') }}"
+                                        class="respimg" alt=""></a>
                                 <div class="widget-posts-descr">
                                     <a href="#" title="">Vivamus dapibus rutrum</a>
                                     <span class="widget-posts-date"> 21 Mar 09.05 </span>
                                 </div>
                             </li>
                             <li class="clearfix">
-                                <a href="#" class="widget-posts-img"><img src="images/all/2.jpg" class="respimg"
-                                        alt=""></a>
+                                <a href="#" class="widget-posts-img"><img src="{{ asset('images/all/2.jpg') }}"
+                                        class="respimg" alt=""></a>
                                 <div class="widget-posts-descr">
                                     <a href="#" title=""> In hac habitasse platea</a>
                                     <span class="widget-posts-date"> 7 Mar 18.21 </span>
                                 </div>
                             </li>
                             <li class="clearfix">
-                                <a href="#" class="widget-posts-img"><img src="images/all/3.jpg" class="respimg"
-                                        alt=""></a>
+                                <a href="#" class="widget-posts-img"><img src="{{ asset('images/all/3.jpg') }}"
+                                        class="respimg" alt=""></a>
                                 <div class="widget-posts-descr">
                                     <a href="#" title="">Tortor tempor in porta</a>
                                     <span class="widget-posts-date"> 7 Mar 16.42 </span>
@@ -99,7 +99,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="about-widget">
-                        <img src="images/logo.png" alt="">
+                        <img src="{{ asset('images/logo.png')  }}" alt="">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -123,9 +123,9 @@
 </div>
 
 <!--=============== scripts  ===============-->
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/plugins.js"></script>
-<script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/plugins.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&amp;libraries=places&amp;callback=initAutocomplete">
 </script>

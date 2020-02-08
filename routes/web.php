@@ -14,5 +14,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return view('public.index');
+});
+
+Route::namespace('Portal')->group(function () {
+    Route::get('/portal/listing/create', 'ListingController@create');
 });
