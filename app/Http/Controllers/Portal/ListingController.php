@@ -5,14 +5,18 @@ namespace App\Http\Controllers\Portal;
 use App\Http\Controllers\Controller;
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ListingController extends Controller
 {
 
     public function index()
     {
+        $user_id        = Auth::user()->id;
 
-        $listings       = Listing::all();
+        $listings       = Listing::select('*')
+            ->where('user_id', $user_id)
+            ->get();
 
         return view('portal.listing.index', ['listings' => $listings]);
     }
@@ -24,7 +28,6 @@ class ListingController extends Controller
 
     public function store(Request $request)
     {
-
         // Validate Request
         $request->validate([
             'title'     => 'required',
@@ -35,17 +38,18 @@ class ListingController extends Controller
             'email'     => 'required',
             'website'   => 'required'
         ]);
+        $user_id        = Auth::user()->id;
 
         // Get form data as array
 
         //GET ALL DATA
         $data           = $request->all();
-
+        $data['user_id'] = $user_id;
         // GET ALL DATA EXCEPT SPEICIFIED DATA
-        $data           = $request->except('_token');
+        // $data           = $request->except('_token');
 
         // GET ONLY DATA SPECIFIED
-        $data           = $request->only(['title', 'address', 'latitude']);
+        // $data           = $request->only(['title', 'address', 'latitude']);
         // dd($data);
 
         //CREATE METHOD LONGHAND
@@ -78,12 +82,12 @@ class ListingController extends Controller
         // $listing               = Listing::insert($data);
 
         // MY CHOICE
-        $listing                = Listing::create($request->all());
+        $listing                = Listing::create($data);
 
         // If create success
         if ($listing) {
 
-            return view('portal.listing.index');
+            return redirect(route('portal.listing.index'));
         }
 
         return view('portal.listing.create');
@@ -128,6 +132,27 @@ class ListingController extends Controller
 
         if ($listing) {
             flash('Updated Successfully! ', 'notification success');
+
+            return redirect(route('portal.listing.index'));
+        }
+
+        flash('Sorry Something went wrong!', 'notification reject');
+    }
+
+    public function delete($id)
+    {
+        $listing        = Listing::findOrFail($id);
+
+        return view('portal.listing.delete', ['listing' => $listing]);
+    }
+
+    public function destroy($id)
+    {
+        $listing = Listing::findOrFail($id);
+        $listing->delete();
+
+        if ($listing) {
+            flash('Deleted Successfully! ', 'notification success');
 
             return redirect(route('portal.listing.index'));
         }

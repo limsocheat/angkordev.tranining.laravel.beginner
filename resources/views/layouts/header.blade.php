@@ -49,9 +49,31 @@
                             onclick="window.location.href='listing.html'">Search</button>
                     </div>
                     <div class="show-search-button"><i class="fa fa-search"></i> <span>Search</span></div>
-                    <a href="dashboard-add-listing.html" class="add-list">Add Listing <span><i
+                    @guest
+                    <a href="{{ route('auth.register_form') }}" class="add-list">Register <span><i
                                 class="fa fa-plus"></i></span></a>
-                    <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>
+                    @else
+                    <a href="{{route('portal.listing.create') }}" class="add-list">Add Listing <span><i
+                                class="fa fa-plus"></i></span></a>
+                    @endguest
+                    @guest
+                    <a href="{{ route('login') }}" class="show-reg-form"><i class="fa fa-sign-in"></i>Sign
+                        In</a>
+                    @else
+                    <div class="header-user-menu">
+                        <div class="header-user-name">
+                            <span><img src="{{ asset('images/avatar/4.jpg') }}" alt=""></span>
+                            Hello , {{ Auth::user()->name }}
+                        </div>
+                        <ul>
+                            <li><a href="dashboard-myprofile.html"> Edit profile</a></li>
+                            <li><a href="dashboard-add-listing.html"> Add Listing</a></li>
+                            <li><a href="dashboard-bookings.html"> Bookings </a></li>
+                            <li><a href="dashboard-review.html"> Reviews </a></li>
+                            <li><a href="#">Log Out</a></li>
+                        </ul>
+                    </div>
+                    @endguest
                     <!-- nav-button-wrap-->
                     <div class="nav-button-wrap color-bg">
                         <div class="nav-button">

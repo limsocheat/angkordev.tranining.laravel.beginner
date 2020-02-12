@@ -8,6 +8,7 @@ class Listing extends Model
 {
     // MY CHOICE 
     protected $fillable = [
+        'user_id',
         'title', 'address', 'latitude', 'longitude',
         'phone', 'email', 'website', 'description',
         'facebook', 'twitter', 'youtube'

@@ -1,6 +1,11 @@
 @extends('portal.default')
 
+@section('portal_title')
+My Listings
+@endsection
+
 @section('portal_content')
+
 @if (flash()->message)
 <div class="{{ flash()->class }}">
     {{ flash()->message }}
@@ -28,7 +33,8 @@
                 <ul class="dashboard-listing-table-opt  fl-wrap">
                     <li><a href="{{ route('portal.listing.edit', $listing->id) }}">Edit <i
                                 class="fa fa-pencil-square-o"></i></a></li>
-                    <li><a href="#" class="del-btn">Delete <i class="fa fa-trash-o"></i></a></li>
+                    <li><a href="{{ route('portal.listing.delete', $listing->id) }}" class="del-btn">Delete <i
+                                class="fa fa-trash-o"></i></a></li>
                 </ul>
             </div>
         </div>

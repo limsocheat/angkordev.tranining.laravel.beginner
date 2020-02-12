@@ -5,7 +5,10 @@
     <div class="container">
         <!-- profile-edit-wrap -->
         <div class="profile-edit-wrap">
-            @include('portal.layouts.breadcrumb')
+            <div class="profile-edit-page-header">
+                <h2>@yield('portal_title')</h2>
+                <div class="breadcrumbs"><a href="#">Home</a><a href="#">Dasboard</a><span>Add Listing</span></div>
+            </div>
 
             <div class="row">
                 <div class="col-md-3">

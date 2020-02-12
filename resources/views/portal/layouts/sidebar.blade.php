@@ -4,8 +4,8 @@
         <div class="user-profile-menu">
             <h3>Main</h3>
             <ul>
-                <li><a href="dashboard.html"><i class="fa fa-gears"></i>Dashboard</a></li>
-                <li><a href="dashboard-myprofile.html"><i class="fa fa-user-o"></i> Edit profile</a></li>
+                <li><a href="{{ route('portal.index') }}"><i class="fa fa-gears"></i>Dashboard</a></li>
+                <li><a href="{{ route('portal.profile.edit') }}"><i class="fa fa-user-o"></i> Edit profile</a></li>
                 <li><a href="dashboard-messages.html"><i class="fa fa-envelope-o"></i> Messages <span>3</span></a>
                 </li>
                 <li><a href="dashboard-password.html"><i class="fa fa-unlock-alt"></i>Change Password</a></li>
@@ -16,7 +16,7 @@
         <div class="user-profile-menu">
             <h3>Listings</h3>
             <ul>
-                <li><a href="dashboard-listing-table.html"><i class="fa fa-th-list"></i> My listigs </a></li>
+                <li><a href="{{ route('portal.listing.index') }}"><i class="fa fa-th-list"></i> My listigs </a></li>
                 <li><a href="dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i> Bookings
                         <span>2</span></a></li>
                 <li><a href="dashboard-review.html"><i class="fa fa-comments-o"></i> Reviews </a></li>
@@ -25,6 +25,9 @@
             </ul>
         </div>
         <!-- user-profile-menu end-->
-        <a href="#" class="log-out-btn">Log Out</a>
+        <form method="post" action="{{route('logout') }}">
+            @csrf
+            <button type="submit" class="log-out-btn" style="cursor: pointer">Log Out</button>
+        </form>
     </div>
 </div>

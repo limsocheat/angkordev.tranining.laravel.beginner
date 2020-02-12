@@ -1,5 +1,9 @@
 @extends('portal.default')
 
+@section('portal_title')
+Edit Listings
+@endsection
+
 @section('portal_content')
 @if (flash()->message)
 <div class="{{ flash()->class }}">

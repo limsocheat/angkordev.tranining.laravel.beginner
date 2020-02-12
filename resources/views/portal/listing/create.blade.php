@@ -1,5 +1,9 @@
 @extends('portal.default')
 
+@section('portal_title')
+Add Listings
+@endsection
+
 @section('portal_content')
 <div class="notification success fl-wrap">
     <p>Your listing <a href="#">Fitness Center Brooklyn</a> has been approved!</p>
