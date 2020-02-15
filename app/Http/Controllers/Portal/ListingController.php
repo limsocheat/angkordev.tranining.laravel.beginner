@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Portal;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,10 @@ class ListingController extends Controller
 
     public function create()
     {
-        return view('portal.listing.create');
+
+        $categories     = Category::select('*')->get();
+
+        return view('portal.listing.create', ['categories' => $categories]);
     }
 
     public function store(Request $request)
@@ -36,7 +40,8 @@ class ListingController extends Controller
             'longitude' => 'required',
             'phone'     => 'required',
             'email'     => 'required',
-            'website'   => 'required'
+            'website'   => 'required',
+            'category_id'   => 'required|integer|exists:categories,id'
         ]);
         $user_id        = Auth::user()->id;
 
@@ -90,7 +95,7 @@ class ListingController extends Controller
             return redirect(route('portal.listing.index'));
         }
 
-        return view('portal.listing.create');
+        flash('Sorry Something went wrong!', 'notification reject');
     }
 
     public function edit($id)

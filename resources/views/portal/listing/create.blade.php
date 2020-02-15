@@ -23,6 +23,21 @@ Add Listings
                 {{ $message }}
             </div>
             @enderror
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Category</label>
+                    <select name="category_id" data-placeholder="All Categories" class="chosen-select">
+                        @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label>Keywords <i class="fa fa-key"></i></label>
+                    <input type="text" placeholder="Maximum 15, should be separated by commas" value="" />
+                </div>
+            </div>
         </div>
     </div>
     <div class="profile-edit-container add-list-container">

@@ -13,8 +13,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('public.index');
+Route::namespace('Frontend')->group(function () {
+    Route::get('/', 'PageController@index')->name('page.index');
+    Route::get('/listing/{listing}', 'ListingController@listing')->name('page.listing');
 });
 
 Route::namespace('Auth')->group(function () {
