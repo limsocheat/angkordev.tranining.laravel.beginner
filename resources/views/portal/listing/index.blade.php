@@ -21,7 +21,7 @@ My Listings
         <div class="dashboard-message">
             <span class="new-dashboard-item">New</span>
             <div class="dashboard-listing-table-image">
-                <a href="listing-single.html"><img src="{{ asset('images/all/3.jpg') }}" alt=""></a>
+                <a href="listing-single.html"><img src="{{ asset('uploads/' . $listing->image) }}" alt=""></a>
             </div>
             <div class="dashboard-listing-table-text">
                 <h4><a href="listing-single.html">{{ $listing->title }} </a></h4>

@@ -12,7 +12,8 @@ class Listing extends Model
         'user_id', 'category_id',
         'title', 'address', 'latitude', 'longitude',
         'phone', 'email', 'website', 'description',
-        'facebook', 'twitter', 'youtube'
+        'facebook', 'twitter', 'youtube',
+        'image'
     ];
 
     // protected $guard = ['id'];

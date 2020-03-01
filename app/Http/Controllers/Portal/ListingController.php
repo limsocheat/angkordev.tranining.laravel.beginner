@@ -125,7 +125,23 @@ class ListingController extends Controller
             'website'   => 'required'
         ]);
 
+        //GET ALL FORM INPUT
         $data           = $request->all();
+
+        // CHECK IF HAS IMAGE FILE
+        if ($request->file('new_image')) {
+            // GET original file name
+            $imageName = $request->file('new_image')->getClientOriginalName();
+
+            // Move file to uploads directory
+            $request->file('new_image')->move(public_path('uploads'), $imageName);
+
+            // DELETE OLD IMAGE
+            @unlink(public_path('uploads/' . $listing->image));
+
+            //SET image to uploaded file 
+            $data['image'] = $imageName;
+        }
 
         // SAVE METHOD 
         // $listing->title     = $data['title'];

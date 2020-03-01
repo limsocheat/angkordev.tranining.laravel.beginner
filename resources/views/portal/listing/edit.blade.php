@@ -10,7 +10,7 @@ Edit Listings
     {{ flash()->message }}
 </div>
 @endif
-<form method="POST" action="{{ route('portal.listing.update', $listing->id) }}">
+<form method="POST" action="{{ route('portal.listing.update', $listing->id) }}" enctype="multipart/form-data">
     @csrf
     <input name="_method" type="hidden" value="PUT">
     <div class="profile-edit-container add-list-container">
@@ -33,6 +33,12 @@ Edit Listings
             <h4>Location / Contacts</h4>
         </div>
         <div class="custom-form">
+            <label for="new_image">Image<i class="fa fa-map-marker"></i></label>
+            {{-- GET IMAGE FROM DATA --}}
+            <img id="imagePreview" src="{{ asset('uploads/'. $listing->image) }}" alt=""
+                style="width: 200px; height: auto; float: left;">
+
+            <input type="file" name="new_image" id="new_image" type="text" placeholder="Upload Image" />
             <label>Address<i class="fa fa-map-marker"></i></label>
             <input name="address" type="text" placeholder="Address of your business"
                 value="{{ old('address', $listing->address) }}" />
@@ -76,4 +82,25 @@ Edit Listings
         </div>
     </div>
 </form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    $('#imagePreview').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        $("#new_image").change(function() {
+            readURL(this);
+        });
+    })
+</script>
 @endsection
